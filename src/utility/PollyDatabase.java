@@ -18,12 +18,14 @@ public class PollyDatabase {
 
     static {
         //startServer();
-        String URL = String.format("jdbc:%s://%s:%s/%s", DBMS, HOST, PORT, DATABASE_NAME);
+        //String URL = String.format("jdbc:%s://%s:%s/%s", DBMS, HOST, PORT, DATABASE_NAME);
+        String URL = "jdbc:sqlite:sqlite/pollygray.db";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            connection = DriverManager.getConnection(URL);
             System.out.println("[DEBUG] CONNECTION CREATED");
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch  ( SQLException e) {
             e.printStackTrace();
         }
     }
